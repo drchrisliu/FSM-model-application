@@ -1,0 +1,361 @@
+[
+	{
+		"actor": "seller",
+		"states": [
+			{
+				"STATEID": "SELLER_LIST_ITEMS",
+				"LABEL": "seller list items",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "INIT" ],
+				"TOEDGES": [ "BUYER_MAKES_OFFERS" ],
+				"LEVEL": 1
+			},
+			{
+				"STATEID": "BUYER_MAKES_OFFERS",
+				"LABEL": "buyer makes offer",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"TOEDGES": [ "SELLER_ACCEPT_OFFERS" ],
+				"FROMEDGES": [ "SELLER_LIST_ITEMS" ],
+				"LEVEL": 2
+			},
+			{
+				"STATEID": "SELLER_ACCEPT_OFFERS",
+				"LABEL": "seller accept offers",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "BUYER_MAKES_OFFERS" ],
+				"TOEDGES": [ "SELLER_SIGNED_CONTRACT", "BUYER_SIGNED_CONTRACT" ],
+				"LEVEL": 3
+			},
+			{
+				"STATEID": "SELLER_SIGNED_CONTRACT",
+				"LABEL": "seller signed contract",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "SELLER_ACCEPT_OFFERS" ],
+				"TOEDGES": [ "CONTRACT_SIGNED" ],
+				"LEVEL": 4
+			},
+			{
+				"STATEID": "BUYER_SIGNED_CONTRACT",
+				"LABEL": "buyer signed contract",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"FROMEDGES": [ "SELLER_ACCEPT_OFFERS" ],
+				"TOEDGES": [ "CONTRACT_SIGNED" ],
+				"LEVEL": 4
+			},
+			{
+				"STATEID": "CONTRACT_SIGNED",
+				"LABEL": "contract signed",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller", "buyer" ],
+				"FROMEDGES": [ "SELLER_SIGNED_CONTRACT", "BUYER_SIGNED_CONTRACT" ],
+				"TOEDGES": [ "SELLER_DEPOSIT", "BUYER_DEPOSIT" ],
+				"LEVEL": 5
+			},
+			{
+				"STATEID": "SELLER_DEPOSIT",
+				"LABEL": "seller deposit",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "CONTRACT_SIGNED" ],
+				"TOEDGES": [ "ESCROW_DEPOSITED" ],
+				"LEVEL": 6
+			},
+			{
+				"STATEID": "BUYER_DEPOSIT",
+				"LABEL": "buyer deposit",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"FROMEDGES": [ "CONTRACT_SIGNED" ],
+				"TOEDGES": [ "ESCROW_DEPOSITED" ],
+				"LEVEL": 6
+			},
+			{
+				"STATEID": "ESCROW_DEPOSITED",
+				"LABEL": "escrow deposit done",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller", "buyer" ],
+				"FROMEDGES": [ "SELLER_DEPOSIT", "BUYER_DEPOSIT" ],
+				"TOEDGES": [ "SELLER_DROP_AT_PORT" ],
+				"LEVEL": 7
+			},
+			{
+				"STATEID": "SELLER_DROP_AT_PORT",
+				"LABEL": "seller drop item at port",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "ESCROW_DEPOSITED" ],
+				"TOEDGES": [ "PASS_CUSTOM" ],
+				"LEVEL": 8
+			},
+			{
+				"STATEID": "BUYER_PICKUP_ITEM",
+				"LABEL": "buyer pickup item",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"TOEDGES": [ "SELLER_RECEIVED_REFUND", "BUYER_RECEIVED_REFUND" ],
+				"FROMEDGES": [ "SHIPPING_AT_DEST" ],
+				"LEVEL": 13
+			},
+			{
+				"STATEID": "SELLER_RECEIVED_REFUND",
+				"LABEL": "seller received deposit",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "BUYER_PICKUP_ITEM" ],
+				"TOEDGES": [ "SUCCESS" ],
+				"LEVEL": 14
+			},
+			{
+				"STATEID": "BUYER_RECEIVED_REFUND",
+				"LABEL": "buyer received refund",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"FROMEDGES": [ "BUYER_PICKUP_ITEM" ],
+				"TOEDGES": [ "SUCCESS" ],
+				"LEVEL": 14
+			},
+			{
+				"STATEID": "SUCCESS",
+				"LABEL": "success",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller", "buyer" ],
+				"FROMEDGES": [ "SELLER_RECEIVED_REFUND", "BUYER_RECEIVED_REFUND" ],
+				"LEVEL": 15
+			}
+		],
+		"transitions": [
+			{ "FROM": "INIT", "TO": "SELLER_LIST_ITEMS", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_MAKES_OFFERS", "TO": "SELLER_ACCEPT_OFFERS", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_ACCEPT_OFFERS", "TO": "SELLER_SIGNED_CONTRACT", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_SIGNED_CONTRACT", "TO": "CONTRACT_SIGNED", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "CONTRACT_SIGNED", "TO": "SELLER_DEPOSIT", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_DEPOSIT", "TO": "ESCROW_DEPOSITED", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "ESCROW_DEPOSITED", "TO": "SELLER_DROP_AT_PORT", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_PICKUP_ITEM", "TO": "SELLER_RECEIVED_REFUND", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_RECEIVED_REFUND", "TO": "SUCCESS", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_SIGNED_CONTRACT", "TO": "CONTRACT_SIGNED", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_DEPOSIT", "TO": "ESCROW_DEPOSITED", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_RECEIVED_REFUND", "TO": "SUCCESS", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_DROP_AT_PORT", "TO": "BUYER_PICKUP_ITEM", "TYPE": "contingency" }
+		]
+	},
+	{
+		"actor": "buyer",
+		"states": [
+			{
+				"STATEID": "SELLER_LIST_ITEMS",
+				"LABEL": "seller list items",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "INIT" ],
+				"TOEDGES": [ "BUYER_MAKES_OFFERS" ],
+				"LEVEL": 1
+			},
+			{
+				"STATEID": "SELLER_ACCEPT_OFFERS",
+				"LABEL": "seller accept offers",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "BUYER_MAKES_OFFERS" ],
+				"TOEDGES": [ "SELLER_SIGNED_CONTRACT", "BUYER_SIGNED_CONTRACT" ],
+				"LEVEL": 3
+			},
+			{
+				"STATEID": "BUYER_SIGNED_CONTRACT",
+				"LABEL": "buyer signed contract",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"FROMEDGES": [ "SELLER_ACCEPT_OFFERS" ],
+				"TOEDGES": [ "CONTRACT_SIGNED" ],
+				"LEVEL": 4
+			},
+			{
+				"STATEID": "SELLER_SIGNED_CONTRACT",
+				"LABEL": "seller signed contract",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "SELLER_ACCEPT_OFFERS" ],
+				"TOEDGES": [ "CONTRACT_SIGNED" ],
+				"LEVEL": 4
+			},
+			{
+				"STATEID": "CONTRACT_SIGNED",
+				"LABEL": "contract signed",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller", "buyer" ],
+				"FROMEDGES": [ "SELLER_SIGNED_CONTRACT", "BUYER_SIGNED_CONTRACT" ],
+				"TOEDGES": [ "SELLER_DEPOSIT", "BUYER_DEPOSIT" ],
+				"LEVEL": 5
+			},
+			{
+				"STATEID": "BUYER_DEPOSIT",
+				"LABEL": "buyer deposit",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"FROMEDGES": [ "CONTRACT_SIGNED" ],
+				"TOEDGES": [ "ESCROW_DEPOSITED" ],
+				"LEVEL": 6
+			},
+			{
+				"STATEID": "SELLER_DEPOSIT",
+				"LABEL": "seller deposit",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "CONTRACT_SIGNED" ],
+				"TOEDGES": [ "ESCROW_DEPOSITED" ],
+				"LEVEL": 6
+			},
+			{
+				"STATEID": "ESCROW_DEPOSITED",
+				"LABEL": "escrow deposit done",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller", "buyer" ],
+				"FROMEDGES": [ "SELLER_DEPOSIT", "BUYER_DEPOSIT" ],
+				"TOEDGES": [ "SELLER_DROP_AT_PORT" ],
+				"LEVEL": 7
+			},
+			{
+				"STATEID": "SHIPPING_AT_DEST",
+				"LABEL": "shipping at des",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "shippingcompany" ],
+				"TOEDGES": [ "BUYER_PICKUP_ITEM" ],
+				"FROMEDGES": [ "DELIEVE_TO_DEST_CUSTOM" ],
+				"LEVEL": 12
+			},
+			{
+				"STATEID": "BUYER_PICKUP_ITEM",
+				"LABEL": "buyer pickup item",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"TOEDGES": [ "SELLER_RECEIVED_REFUND", "BUYER_RECEIVED_REFUND" ],
+				"FROMEDGES": [ "SHIPPING_AT_DEST" ],
+				"LEVEL": 13
+			},
+			{
+				"STATEID": "BUYER_RECEIVED_REFUND",
+				"LABEL": "buyer received refund",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "buyer" ],
+				"FROMEDGES": [ "BUYER_PICKUP_ITEM" ],
+				"TOEDGES": [ "SUCCESS" ],
+				"LEVEL": 14
+			},
+			{
+				"STATEID": "SELLER_RECEIVED_REFUND",
+				"LABEL": "seller received deposit",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "BUYER_PICKUP_ITEM" ],
+				"TOEDGES": [ "SUCCESS" ],
+				"LEVEL": 14
+			},
+			{
+				"STATEID": "SUCCESS",
+				"LABEL": "success",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "seller", "buyer" ],
+				"FROMEDGES": [ "SELLER_RECEIVED_REFUND", "BUYER_RECEIVED_REFUND" ],
+				"LEVEL": 15
+			}
+		],
+		"transitions": [
+			{ "FROM": "SELLER_SIGNED_CONTRACT", "TO": "CONTRACT_SIGNED", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_DEPOSIT", "TO": "ESCROW_DEPOSITED", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_RECEIVED_REFUND", "TO": "SUCCESS", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_LIST_ITEMS", "TO": "BUYER_MAKES_OFFERS", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_ACCEPT_OFFERS", "TO": "BUYER_SIGNED_CONTRACT", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_SIGNED_CONTRACT", "TO": "CONTRACT_SIGNED", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "CONTRACT_SIGNED", "TO": "BUYER_DEPOSIT", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_DEPOSIT", "TO": "ESCROW_DEPOSITED", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SHIPPING_AT_DEST", "TO": "BUYER_PICKUP_ITEM", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_PICKUP_ITEM", "TO": "BUYER_RECEIVED_REFUND", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "BUYER_RECEIVED_REFUND", "TO": "SUCCESS", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "SELLER_LIST_ITEMS", "TO": "SELLER_ACCEPT_OFFERS", "TYPE": "contingency" },
+			{ "FROM": "ESCROW_DEPOSITED", "TO": "SHIPPING_AT_DEST", "TYPE": "contingency" }
+		]
+	},
+	{
+		"actor": "shippingcompany",
+		"states": [
+			{
+				"STATEID": "SELLER_DROP_AT_PORT",
+				"LABEL": "seller drop item at port",
+				"TYPE": "contingency",
+				"OUTPUT": "",
+				"actors": [ "seller" ],
+				"FROMEDGES": [ "ESCROW_DEPOSITED" ],
+				"TOEDGES": [ "PASS_CUSTOM" ],
+				"LEVEL": 8
+			},
+			{
+				"STATEID": "LOAD_ON_SHIP",
+				"LABEL": "load on ship",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "shippingcompany" ],
+				"FROMEDGES": [ "PASS_CUSTOM" ],
+				"TOEDGES": [ "DELIEVE_TO_DEST_CUSTOM" ],
+				"LEVEL": 10
+			},
+			{
+				"STATEID": "DELIEVE_TO_DEST_CUSTOM",
+				"LABEL": "arrive dest custom",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "shippingcompany" ],
+				"FROMEDGES": [ "LOAD_ON_SHIP" ],
+				"TOEDGES": [ "SHIPPING_AT_DEST" ],
+				"LEVEL": 11
+			},
+			{
+				"STATEID": "SHIPPING_AT_DEST",
+				"LABEL": "shipping at des",
+				"TYPE": "solid",
+				"OUTPUT": "",
+				"actors": [ "shippingcompany" ],
+				"TOEDGES": [ "BUYER_PICKUP_ITEM" ],
+				"FROMEDGES": [ "DELIEVE_TO_DEST_CUSTOM" ],
+				"LEVEL": 12
+			}
+		],
+		"transitions": [
+			{ "FROM": "SELLER_DROP_AT_PORT", "TO": "PASS_CUSTOM", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "PASS_CUSTOM", "TO": "LOAD_ON_SHIP", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "LOAD_ON_SHIP", "TO": "DELIEVE_TO_DEST_CUSTOM", "INPUT": "", "TYPE": "solid" },
+			{ "FROM": "DELIEVE_TO_DEST_CUSTOM", "TO": "SHIPPING_AT_DEST", "INPUT": "", "TYPE": "solid" }
+		]
+	}
+]

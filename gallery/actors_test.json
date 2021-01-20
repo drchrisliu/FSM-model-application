@@ -1,0 +1,343 @@
+{
+	"actorsFSM": [
+		{
+			"actor": "seller",
+			"transitions": [
+				{
+					"FROM": "INIT",
+					"TO": "SELLER_LIST_ITEMS",
+					"INPUT": "",
+					"TYPE": "undefined"
+				},
+				{
+					"FROM": "SELLER_LIST_ITEMS",
+					"TO": "BUYER_MAKES_OFFERS",
+					"INPUT": "",
+					"TYPE": "contingency"
+				},
+				{
+					"FROM": "BUYER_MAKES_OFFERS",
+					"TO": "SELLER_ACCEPT_OFFERS",
+					"INPUT": "",
+					"TYPE": "undefined"
+				},
+				{
+					"FROM": "SELLER_ACCEPT_OFFERS",
+					"TO": "SELLER_SIGNED_CONTRACT",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "SELLER_SIGNED_CONTRACT",
+					"TO": "CONTRACT_SIGNED",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "CONTRACT_SIGNED",
+					"TO": "SELLER_DEPOSIT",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "SELLER_DEPOSIT",
+					"TO": "ESCROW_DEPOSITED",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "ESCROW_DEPOSITED",
+					"TO": "SELLER_DROP_AT_PORT",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "SELLER_DROP_AT_PORT",
+					"TO": "BUYER_PICKUP_ITEM",
+					"INPUT": "",
+					"TYPE": "contingency"
+				},
+				{
+					"FROM": "BUYER_PICKUP_ITEM",
+					"TO": "SELLER_RECEIVED_REFUND",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "SELLER_RECEIVED_REFUND",
+					"TO": "SUCCESS",
+					"INPUT": "",
+					"TYPE": ""
+				}
+			],
+			"states": [
+				{
+					"STATEID": "INIT",
+					"LABEL": "init",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SELLER_LIST_ITEMS",
+					"LABEL": "seller list items",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "BUYER_MAKES_OFFERS",
+					"LABEL": "buyer make offers",
+					"TYPE": "contingency",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SELLER_ACCEPT_OFFERS",
+					"LABEL": "seller accept offers",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SELLER_SIGNED_CONTRACT",
+					"LABEL": "seller signed contract",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "CONTRACT_SIGNED",
+					"LABEL": "contract signed",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SELLER_DEPOSIT",
+					"LABEL": "seller deposit",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "ESCROW_DEPOSITED",
+					"LABEL": "escrow deposit done",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SELLER_DROP_AT_PORT",
+					"LABEL": "seller drop item at port",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SELLER_RECEIVED_REFUND",
+					"LABEL": "seller received deposit",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SUCCESS",
+					"LABEL": "success",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "BUYER_PICKUP_ITEM",
+					"LABEL": "buyer pickup item",
+					"TYPE": "contingency",
+					"OUTPUT": ""
+				}
+			]
+		},
+		{
+			"actor": "buyer",
+			"transitions": [
+				{
+					"FROM": "SELLER_LIST_ITEMS",
+					"TO": "BUYER_MAKES_OFFERS",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "BUYER_MAKES_OFFERS",
+					"TO": "SELLER_ACCEPT_OFFERS",
+					"INPUT": "",
+					"TYPE": "contingency"
+				},
+				{
+					"FROM": "SELLER_ACCEPT_OFFERS",
+					"TO": "BUYER_SIGNED_CONTRACT",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "BUYER_SIGNED_CONTRACT",
+					"TO": "CONTRACT_SIGNED",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "CONTRACT_SIGNED",
+					"TO": "BUYER_DEPOSIT",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "BUYER_DEPOSIT",
+					"TO": "ESCROW_DEPOSITED",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "ESCROW_DEPOSITED",
+					"TO": "SHIPPING_AT_DEST",
+					"INPUT": "",
+					"TYPE": "contingency"
+				},
+				{
+					"FROM": "SHIPPING_AT_DEST",
+					"TO": "BUYER_PICKUP_ITEM",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "BUYER_PICKUP_ITEM",
+					"TO": "BUYER_RECEIVED_REFUND",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "BUYER_RECEIVED_REFUND",
+					"TO": "SUCCESS",
+					"INPUT": "",
+					"TYPE": ""
+				}
+			],
+			"states": [
+				{
+					"STATEID": "BUYER_MAKES_OFFERS",
+					"LABEL": "buyer makes offer",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SELLER_LIST_ITEMS",
+					"LABEL": "seller list items",
+					"TYPE": "contingency",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SELLER_ACCEPT_OFFERS",
+					"LABEL": "seller accept offers",
+					"TYPE": "contingency",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "BUYER_SIGNED_CONTRACT",
+					"LABEL": "buyer signed contract",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "CONTRACT_SIGNED",
+					"LABEL": "contract signed",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "BUYER_DEPOSIT",
+					"LABEL": "buyer deposit",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "ESCROW_DEPOSITED",
+					"LABEL": "escrow deposit done",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SHIPPING_AT_DEST",
+					"LABEL": "destination at port",
+					"TYPE": "contingency",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "BUYER_PICKUP_ITEM",
+					"LABEL": "buyer pickup item",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "BUYER_RECEIVED_REFUND",
+					"LABEL": "buyer received refund",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SUCCESS",
+					"LABEL": "success",
+					"TYPE": "",
+					"OUTPUT": ""
+				}
+			]
+		},
+		{
+			"actor": "shippingcompany",
+			"transitions": [
+				{
+					"FROM": "SELLER_DROP_AT_PORT",
+					"TO": "PASS_CUSTOM",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "PASS_CUSTOM",
+					"TO": "LOAD_ON_SHIP",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "LOAD_ON_SHIP",
+					"TO": "DELIEVE_TO_DEST_CUSTOM",
+					"INPUT": "",
+					"TYPE": ""
+				},
+				{
+					"FROM": "DELIEVE_TO_DEST_CUSTOM",
+					"TO": "SHIPPING_AT_DEST",
+					"INPUT": "",
+					"TYPE": ""
+				}
+			],
+			"states": [
+				{
+					"STATEID": "SELLER_DROP_AT_PORT",
+					"LABEL": "seller drop at port",
+					"TYPE": "contingency",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "PASS_CUSTOM",
+					"LABEL": "pass custom",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "LOAD_ON_SHIP",
+					"LABEL": "load on ship",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "DELIEVE_TO_DEST_CUSTOM",
+					"LABEL": "arrive dest custom",
+					"TYPE": "",
+					"OUTPUT": ""
+				},
+				{
+					"STATEID": "SHIPPING_AT_DEST",
+					"LABEL": "shipping at des",
+					"TYPE": "",
+					"OUTPUT": ""
+				}
+			]
+		}
+	]
+}

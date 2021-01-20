@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cf64bc3c-7b68-4027-91d7-dbf4f69ea185" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mIhBNLaI0Ut92nIVxYy63XLLPY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor/ace/worker" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\websites\chrisactormodel\vendor\ace\worker" />
+      <recent name="C:\Users\chris\websites\chrisactormodel\vendor\jquery" />
+      <recent name="C:\Users\chris\websites\chrisactormodel\gallery" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="layout-worker.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vendor/graphviz-d3-renderer/layout-worker.js" working-dir="$PROJECT_DIR$/vendor/graphviz-d3-renderer">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.layout-worker.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cf64bc3c-7b68-4027-91d7-dbf4f69ea185" name="Default Changelist" comment="" />
+      <created>1609186876709</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609186876709</updated>
+      <workItem from="1609186882631" duration="2733000" />
+      <workItem from="1609203803504" duration="171000" />
+      <workItem from="1609204086075" duration="1103000" />
+      <workItem from="1609258966926" duration="2934000" />
+      <workItem from="1609261971936" duration="14676000" />
+      <workItem from="1609334882114" duration="7635000" />
+      <workItem from="1609359988369" duration="11031000" />
+      <workItem from="1609535193522" duration="8028000" />
+      <workItem from="1609597676453" duration="15474000" />
+      <workItem from="1609639767700" duration="14929000" />
+      <workItem from="1609717065282" duration="18115000" />
+      <workItem from="1610136133032" duration="2423000" />
+      <workItem from="1610141519898" duration="5161000" />
+      <workItem from="1610230932948" duration="2848000" />
+      <workItem from="1610288025137" duration="3337000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="176" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609187942134">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state x="176" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.1003@0.0.1440.1003" timestamp="1609187942134" />
+    <state x="501" y="257" key="FileChooserDialogImpl" timestamp="1609717118836">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state x="501" y="257" key="FileChooserDialogImpl/0.0.1440.1003@0.0.1440.1003" timestamp="1609717118836" />
+    <state width="1419" height="269" key="GridCell.Tab.0.bottom" timestamp="1609201583302">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state width="1419" height="269" key="GridCell.Tab.0.bottom/0.0.1440.1003@0.0.1440.1003" timestamp="1609201583302" />
+    <state width="1419" height="269" key="GridCell.Tab.0.center" timestamp="1609201583302">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state width="1419" height="269" key="GridCell.Tab.0.center/0.0.1440.1003@0.0.1440.1003" timestamp="1609201583302" />
+    <state width="1419" height="269" key="GridCell.Tab.0.left" timestamp="1609201583302">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state width="1419" height="269" key="GridCell.Tab.0.left/0.0.1440.1003@0.0.1440.1003" timestamp="1609201583302" />
+    <state width="1419" height="269" key="GridCell.Tab.0.right" timestamp="1609201583302">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state width="1419" height="269" key="GridCell.Tab.0.right/0.0.1440.1003@0.0.1440.1003" timestamp="1609201583302" />
+    <state x="93" y="93" width="1255" height="817" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609433379262">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state x="93" y="93" width="1255" height="817" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.1003@0.0.1440.1003" timestamp="1609433379262" />
+    <state x="414" y="233" width="612" height="536" key="find.popup" timestamp="1609264520448">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state x="414" y="233" width="612" height="536" key="find.popup/0.0.1440.1003@0.0.1440.1003" timestamp="1609264520448" />
+    <state x="377" y="232" key="run.anything.popup" timestamp="1610231552770">
+      <screen x="0" y="0" width="1440" height="1003" />
+    </state>
+    <state x="377" y="232" key="run.anything.popup/0.0.1440.1003@0.0.1440.1003" timestamp="1610231552770" />
+  </component>
+</project>
